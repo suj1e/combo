@@ -1,0 +1,79 @@
+name: "CodeQL Analysis"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      # required for all workflows
+      security-events: write
+      # required to fetch internal or private CodeQL packs
+      packages: read
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java' ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+          server-id: codeup-repo
+          settings-path: ${{ github.workspace }}
+
+      - name: Create settings.xml
+        run: |
+          cat << EOF > ${{ github.workspace }}/settings.xml
+          <settings>
+            <servers>
+              <server>
+                <id>codeup-repo</id>
+                <username>${{ secrets.CODEUP_USERNAME }}</username>
+                <password>${{ secrets.CODEUP_PASSWORD }}</password>
+              </server>
+            </servers>
+          </settings>
+          <repositories>
+            <repository>
+              <id>codeup-repo</id>
+              <url>${{ secrets.CODEUP_REPO_URL }}</url>
+              <releases>
+                <enabled>true</enabled>
+              </releases>
+              <snapshots>
+                <enabled>true</enabled>
+              </snapshots>
+            </repository>
+          </repositories>
+          EOF
+
+      - name: Build and run code analysis
+        run: mvn clean compile -Dmaven.test.skip=true
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
