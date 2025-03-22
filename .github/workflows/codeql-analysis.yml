@@ -5,8 +5,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  schedule:
-    - cron: '0 1 * * *'
+#  schedule:
+#    - cron: '0 1 * * *'
 
 jobs:
   analyze:
@@ -59,9 +59,19 @@ jobs:
           <repositories>
             <repository>
               <id>codeup-repo</id>
-              <url>${{ secrets.CODEUP_REPO_URL }}</url>
+              <url>${{ secrets.CODEUP_RELEASE_REPO_URL }}</url>
               <releases>
                 <enabled>true</enabled>
+              </releases>
+              <snapshots>
+                <enabled>false</enabled>
+              </snapshots>
+            </repository>
+            <repository>
+              <id>codeup-repo</id>
+              <url>${{ secrets.CODEUP_SNAPSHOT_REPO_URL }}</url>
+              <releases>
+                <enabled>false</enabled>
               </releases>
               <snapshots>
                 <enabled>true</enabled>

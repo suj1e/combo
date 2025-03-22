@@ -2,8 +2,9 @@ name: "Codeup Deploy"
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   deploy-to-codeup:
@@ -37,4 +38,4 @@ jobs:
           EOF
 
       - name: Publish to Codeup Artifact Repository
-        run: mvn deploy -s ${{ github.workspace }}/settings.xml -DaltSnapshotDeploymentRepository=codeup-repo::default::${{ secrets.CODEUP_REPO_URL }}
+        run: mvn deploy -s ${{ github.workspace }}/settings.xml -DaltSnapshotDeploymentRepository=codeup-repo::default::${{ secrets.CODEUP_SNAPSHOT_REPO_URL }}
