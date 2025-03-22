@@ -1,9 +1,9 @@
-package org.flooc.combo.x.rpc.model;
+package org.flooc.combo.common.rpc.model;
 
 import lombok.Builder;
 import lombok.Getter;
 import org.flooc.combo.common.exception.ExceptionEnum;
-import org.flooc.combo.x.rpc.RpcCodeEnum;
+import org.flooc.combo.common.rpc.RpcCodeEnum;
 
 /**
  * RPC响应模型

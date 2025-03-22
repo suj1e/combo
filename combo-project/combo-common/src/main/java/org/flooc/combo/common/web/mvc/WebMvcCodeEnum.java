@@ -1,4 +1,4 @@
-package org.flooc.combo.x.web.mvc;
+package org.flooc.combo.common.web.mvc;
 
 import java.util.Optional;
 import lombok.Getter;

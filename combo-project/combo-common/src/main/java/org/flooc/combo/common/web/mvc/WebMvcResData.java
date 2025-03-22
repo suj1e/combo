@@ -1,4 +1,4 @@
-package org.flooc.combo.x.web.mvc;
+package org.flooc.combo.common.web.mvc;
 
 import lombok.Builder;
 import lombok.Getter;

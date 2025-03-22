@@ -1,4 +1,4 @@
-package org.flooc.combo.x.web.mvc.model.request;
+package org.flooc.combo.common.web.mvc.model.request;
 
 import java.io.Serializable;
 

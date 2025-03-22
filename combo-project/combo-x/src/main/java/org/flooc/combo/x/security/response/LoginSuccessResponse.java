@@ -14,7 +14,7 @@ import org.flooc.combo.x.constant.CmpExceptionConstant.SecurityExceptionEnum;
 import org.flooc.combo.x.security.common.LoginSuccessToken;
 import org.flooc.combo.x.security.config.JwtProperties;
 import org.flooc.combo.x.security.jwt.JwtAuthenticationToken;
-import org.flooc.combo.x.web.mvc.WebMvcResData;
+import org.flooc.combo.common.web.mvc.WebMvcResData;
 
 /**
  * <p>

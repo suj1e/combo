@@ -74,7 +74,7 @@
       </dependency>
       <dependency>
         <groupId>org.flooc</groupId>
-        <artifactId>combo-cmps-bom</artifactId>
+        <artifactId>combo-bom</artifactId>
         <version>${project.version}</version>
         <scope>import</scope>
         <type>pom</type>

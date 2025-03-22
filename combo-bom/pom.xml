@@ -9,7 +9,7 @@
   </parent>
 
   <packaging>pom</packaging>
-  <artifactId>combo-cmps-bom</artifactId>
+  <artifactId>combo-bom</artifactId>
   <name>${project.artifactId} ${project.version}</name>
 
   <properties>
@@ -21,6 +21,11 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.flooc</groupId>
         <artifactId>combo-cmp</artifactId>

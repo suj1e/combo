@@ -1,4 +1,4 @@
-package org.flooc.combo.x.rpc;
+package org.flooc.combo.common.rpc;
 
 import java.util.Optional;
 import lombok.Getter;

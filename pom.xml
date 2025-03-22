@@ -12,7 +12,7 @@
     <module>combo-project</module>
     <module>combo-dependencies</module>
     <module>combo-parent</module>
-    <module>combo-cmps-bom</module>
+    <module>combo-bom</module>
     <module>combo-platform</module>
   </modules>
   <packaging>pom</packaging>

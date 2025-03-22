@@ -20,7 +20,7 @@ import org.flooc.combo.x.security.jwt.JwtAuthenticationToken;
 import org.flooc.combo.x.security.jwt.JwtAuthenticationTokenMapper;
 import org.flooc.combo.x.security.jwt.JwtUtils;
 import org.flooc.combo.x.security.response.LoginSuccessResponse;
-import org.flooc.combo.x.web.mvc.WebMvcResData;
+import org.flooc.combo.common.web.mvc.WebMvcResData;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.lang.NonNull;

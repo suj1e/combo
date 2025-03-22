@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.flooc.combo.x.constant.CmpExceptionConstant.SecurityExceptionEnum;
 import org.flooc.combo.x.security.exception.SecurityException;
-import org.flooc.combo.x.web.mvc.WebMvcResData;
+import org.flooc.combo.common.web.mvc.WebMvcResData;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
