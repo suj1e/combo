@@ -38,4 +38,4 @@ jobs:
           EOF
 
       - name: Publish to Codeup Artifact Repository
-        run: mvn deploy -s ${{ github.workspace }}/settings.xml -DaltSnapshotDeploymentRepository=codeup-repo::default::${{ secrets.CODEUP_SNAPSHOT_REPO_URL }}
+        run: mvn -B deploy -s ${{ github.workspace }}/settings.xml -DaltSnapshotDeploymentRepository=codeup-repo::default::${{ secrets.CODEUP_SNAPSHOT_REPO_URL }} -Dmaven.test.skip=true -Pgit-commit-id-package

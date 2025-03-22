@@ -81,7 +81,7 @@ jobs:
           EOF
 
       - name: Build and run code analysis
-        run: mvn clean compile -Dmaven.test.skip=true
+        run: mvn -B clean compile -Dmaven.test.skip=true
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
