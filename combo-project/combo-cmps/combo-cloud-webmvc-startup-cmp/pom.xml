@@ -23,7 +23,7 @@
   <dependencies>
     <dependency>
       <groupId>org.flooc</groupId>
-      <artifactId>combo-web-startup-cmp</artifactId>
+      <artifactId>combo-webmvc-startup-cmp</artifactId>
     </dependency>
     <dependency>
       <groupId>com.alibaba.cloud</groupId>

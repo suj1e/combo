@@ -33,12 +33,12 @@
       </dependency>
       <dependency>
         <groupId>org.flooc</groupId>
-        <artifactId>combo-web-startup-cmp</artifactId>
+        <artifactId>combo-webmvc-startup-cmp</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.flooc</groupId>
-        <artifactId>combo-cloud-web-startup-cmp</artifactId>
+        <artifactId>combo-cloud-webmvc-startup-cmp</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
