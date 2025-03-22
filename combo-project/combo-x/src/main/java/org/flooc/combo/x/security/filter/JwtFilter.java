@@ -20,7 +20,7 @@ import org.flooc.combo.x.security.jwt.JwtAuthenticationToken;
 import org.flooc.combo.x.security.jwt.JwtAuthenticationTokenMapper;
 import org.flooc.combo.x.security.jwt.JwtUtils;
 import org.flooc.combo.x.security.response.LoginSuccessResponse;
-import org.flooc.combo.x.web.model.WebResData;
+import org.flooc.combo.x.web.mvc.WebMvcResData;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.lang.NonNull;
@@ -132,7 +132,7 @@ public class JwtFilter extends OncePerRequestFilter {
       throws IOException {
     ObjectMapper om = new ObjectMapper();
     om.writeValue(response.getOutputStream(),
-        WebResData.forFail(SecurityExceptionEnum.JwtError));
+        WebMvcResData.forFail(SecurityExceptionEnum.JwtError));
   }
 
   private static String getToken(String header) {

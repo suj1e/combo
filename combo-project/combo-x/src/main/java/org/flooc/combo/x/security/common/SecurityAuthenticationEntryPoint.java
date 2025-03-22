@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.flooc.combo.x.constant.CmpExceptionConstant.SecurityExceptionEnum;
-import org.flooc.combo.x.web.model.WebResData;
+import org.flooc.combo.x.web.mvc.WebMvcResData;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
@@ -28,7 +28,7 @@ public class SecurityAuthenticationEntryPoint implements AuthenticationEntryPoin
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(response.getOutputStream(), WebResData.forFail(SecurityExceptionEnum.AuthEntryError));
+		mapper.writeValue(response.getOutputStream(), WebMvcResData.forFail(SecurityExceptionEnum.AuthEntryError));
 	}
 
 }

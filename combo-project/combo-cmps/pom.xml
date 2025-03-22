@@ -23,8 +23,8 @@
 
   <modules>
     <module>combo-cmp</module>
-    <module>combo-web-startup-cmp</module>
-    <module>combo-cloud-web-startup-cmp</module>
+    <module>combo-webmvc-startup-cmp</module>
+    <module>combo-cloud-webmvc-startup-cmp</module>
     <module>combo-data-jpa-cmp</module>
     <module>combo-oss-cmp</module>
     <module>combo-security-cmp</module>

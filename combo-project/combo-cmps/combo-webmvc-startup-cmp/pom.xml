@@ -10,7 +10,7 @@
   </parent>
 
   <packaging>jar</packaging>
-  <artifactId>combo-cloud-web-startup-cmp</artifactId>
+  <artifactId>combo-webmvc-startup-cmp</artifactId>
   <name>${project.artifactId} ${project.version}</name>
 
   <properties>
@@ -19,20 +19,28 @@
     <maven.install.skip>false</maven.install.skip>
   </properties>
 
-
   <dependencies>
     <dependency>
       <groupId>org.flooc</groupId>
-      <artifactId>combo-web-startup-cmp</artifactId>
+      <artifactId>combo-cmp</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
   </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+  </build>
 
 </project>

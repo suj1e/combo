@@ -1,4 +1,4 @@
-package org.flooc.combo.x.web;
+package org.flooc.combo.x.web.mvc;
 
 import java.util.Optional;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import org.flooc.combo.common.constant.BizEnum;
  * @since 1.0.0
  */
 @Getter
-public enum WebCodeEnum implements BizEnum<WebCodeEnum> {
+public enum WebMvcCodeEnum implements BizEnum<WebMvcCodeEnum> {
 
 	SUCCESS(200, "成功"), ERROR(500, "错误"),;
 
@@ -18,14 +18,14 @@ public enum WebCodeEnum implements BizEnum<WebCodeEnum> {
 
 	private final String text;
 
-	WebCodeEnum(Integer code, String text) {
+	WebMvcCodeEnum(Integer code, String text) {
 		this.code = code;
 		this.text = text;
 	}
 
 
-	public static Optional<WebCodeEnum> of(Integer code) {
-		return Optional.ofNullable(AppEnum.parse(WebCodeEnum.class, code));
+	public static Optional<WebMvcCodeEnum> of(Integer code) {
+		return Optional.ofNullable(AppEnum.parse(WebMvcCodeEnum.class, code));
 	}
 
 }

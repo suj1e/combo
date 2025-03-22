@@ -14,7 +14,7 @@ import org.flooc.combo.x.constant.CmpExceptionConstant.SecurityExceptionEnum;
 import org.flooc.combo.x.security.common.LoginSuccessToken;
 import org.flooc.combo.x.security.config.JwtProperties;
 import org.flooc.combo.x.security.jwt.JwtAuthenticationToken;
-import org.flooc.combo.x.web.model.WebResData;
+import org.flooc.combo.x.web.mvc.WebMvcResData;
 
 /**
  * <p>
@@ -85,7 +85,7 @@ public class LoginSuccessResponse {
     ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     objectMapper.registerModule(new JavaTimeModule());
-    objectMapper.writeValue(response.getOutputStream(), WebResData.forOK(successResponse));
+    objectMapper.writeValue(response.getOutputStream(), WebMvcResData.forOK(successResponse));
   }
 
 }

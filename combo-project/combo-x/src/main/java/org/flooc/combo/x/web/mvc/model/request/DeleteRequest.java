@@ -1,4 +1,4 @@
-package org.flooc.combo.x.web.model.request;
+package org.flooc.combo.x.web.mvc.model.request;
 
 
 /**

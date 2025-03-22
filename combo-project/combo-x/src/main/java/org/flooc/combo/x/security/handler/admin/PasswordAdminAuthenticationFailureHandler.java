@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.flooc.combo.x.constant.CmpExceptionConstant.SecurityExceptionEnum;
 import org.flooc.combo.x.security.exception.SecurityException;
-import org.flooc.combo.x.web.model.WebResData;
+import org.flooc.combo.x.web.mvc.WebMvcResData;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
@@ -26,11 +26,11 @@ public class PasswordAdminAuthenticationFailureHandler implements Authentication
 			AuthenticationException exception) throws IOException, ServletException {
 		ObjectMapper mapper = new ObjectMapper();
 		if (exception instanceof SecurityException ex && SecurityExceptionEnum.PasswordIncorrect.equals(ex.getExceptionEnum())) {
-			mapper.writeValue(response.getOutputStream(), WebResData.forFail(ex.getMessage()));
+			mapper.writeValue(response.getOutputStream(), WebMvcResData.forFail(ex.getMessage()));
 		}
 		else {
 			mapper.writeValue(response.getOutputStream(),
-					WebResData.forFail(SecurityExceptionEnum.AuthenticationError));
+					WebMvcResData.forFail(SecurityExceptionEnum.AuthenticationError));
 		}
 	}
 

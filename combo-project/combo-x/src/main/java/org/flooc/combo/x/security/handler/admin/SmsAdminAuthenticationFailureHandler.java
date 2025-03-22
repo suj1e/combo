@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import org.flooc.combo.x.constant.CmpExceptionConstant.SecurityExceptionEnum;
 import org.flooc.combo.x.security.exception.SecurityException;
-import org.flooc.combo.x.web.model.WebResData;
+import org.flooc.combo.x.web.mvc.WebMvcResData;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
@@ -27,11 +27,11 @@ public class SmsAdminAuthenticationFailureHandler implements AuthenticationFailu
 		// 这里还可以判断异常状态去写，比如黑名单异常
 		ObjectMapper mapper = new ObjectMapper();
 		if (exception instanceof SecurityException ex && SecurityExceptionEnum.VerifyCodeIncorrect.equals(ex.getExceptionEnum())) {
-			mapper.writeValue(response.getOutputStream(), WebResData.forFail(ex.getMessage()));
+			mapper.writeValue(response.getOutputStream(), WebMvcResData.forFail(ex.getMessage()));
 		}
 		else {
 			mapper.writeValue(response.getOutputStream(),
-					WebResData.forFail(SecurityExceptionEnum.AuthenticationError));
+					WebMvcResData.forFail(SecurityExceptionEnum.AuthenticationError));
 		}
 	}
 
