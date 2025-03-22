@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.cloud.openfeign.FeignClientSpecification;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
@@ -30,7 +29,7 @@ class AppLoggingRegistrar implements ImportBeanDefinitionRegistrar {
       pkg = className.substring(0, className.lastIndexOf("."));
     }
     BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(
-        FeignClientSpecification.class);
+        AppLoggingConfiguration.class);
     builder.addConstructorArgValue(pkg);
     builder.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
     registry.registerBeanDefinition(AppLoggingConfiguration.class.getSimpleName(),
