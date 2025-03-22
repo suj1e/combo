@@ -21,8 +21,8 @@
   <modules>
     <module>combo-common</module>
     <module>combo-cmps</module>
-    <module>combo-core</module>
-    <module>combo-core-autoconfigure</module>
+    <module>combo-x</module>
+    <module>combo-x-autoconfigure</module>
     <module>combo-tests</module>
   </modules>
 

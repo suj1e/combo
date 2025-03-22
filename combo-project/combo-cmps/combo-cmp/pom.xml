@@ -22,7 +22,7 @@
   <dependencies>
     <dependency>
       <groupId>org.flooc</groupId>
-      <artifactId>combo-core-autoconfigure</artifactId>
+      <artifactId>combo-x-autoconfigure</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

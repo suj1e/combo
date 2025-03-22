@@ -1,0 +1,6 @@
+org.flooc.combo.x.autoconfigure.common.CommonAutoConfiguration
+org.flooc.combo.x.autoconfigure.common.DataAutoConfiguration
+org.flooc.combo.x.autoconfigure.common.OssAutoConfiguration
+org.flooc.combo.x.autoconfigure.common.SecurityAutoConfiguration
+org.flooc.combo.x.autoconfigure.common.SmsAutoConfiguration
+org.flooc.combo.x.autoconfigure.common.ValidateAutoConfiguration

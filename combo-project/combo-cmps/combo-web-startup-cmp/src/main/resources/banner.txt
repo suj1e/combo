@@ -1,0 +1,7 @@
+
+___________.__                         Combo: ${combo.version}
+\_   _____/|  |   ____   ____   ____   Port: ${server.port}
+ |    __)  |  |  /  _ \ /  _ \_/ ___\  Pid: ${pid}
+ |     \   |  |_(  <_> |  <_> )  \___  Env: ${spring.profiles.active}
+ \___  /   |____/\____/ \____/ \___  > AppLoggingLevel: ${logging.level.root:INFO}
+     \/                            \/  Path: http://${app.startup.ip}:${server.port}${server.servlet.context-path:}
