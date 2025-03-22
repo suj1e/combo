@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.flooc</groupId>
+    <artifactId>combo-cmps</artifactId>
+    <version>${revision}</version>
+  </parent>
+
+  <packaging>jar</packaging>
+  <artifactId>combo-serial-number-cmp</artifactId>
+  <name>${project.artifactId} ${project.version}</name>
+
+  <properties>
+    <maven.test.skip>false</maven.test.skip>
+    <maven.deploy.skip>false</maven.deploy.skip>
+    <maven.install.skip>false</maven.install.skip>
+  </properties>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>org.flooc</groupId>
+      <artifactId>combo-cmp</artifactId>
+    </dependency>
+
+  </dependencies>
+
+
+
+</project>

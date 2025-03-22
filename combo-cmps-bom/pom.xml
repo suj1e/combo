@@ -28,7 +28,37 @@
       </dependency>
       <dependency>
         <groupId>org.flooc</groupId>
-        <artifactId>combo-startup-cmp</artifactId>
+        <artifactId>combo-web-startup-cmp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-cloud-web-startup-cmp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-data-jpa-cmp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-oss-cmp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-security-cmp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-serial-number-cmp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.flooc</groupId>
+        <artifactId>combo-sms-cmp</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
