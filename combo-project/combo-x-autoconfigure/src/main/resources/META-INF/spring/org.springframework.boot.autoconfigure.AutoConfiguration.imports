@@ -1,0 +1,5 @@
+org.flooc.combox.autoconfigure.boot.async.AsyncAutoConfiguration
+org.flooc.combox.autoconfigure.boot.dataoperation.DataAutoConfiguration
+org.flooc.combox.autoconfigure.boot.oss.OssAutoConfiguration
+org.flooc.combox.autoconfigure.boot.security.SecurityAutoConfiguration
+org.flooc.combox.autoconfigure.boot.sms.SmsAutoConfiguration

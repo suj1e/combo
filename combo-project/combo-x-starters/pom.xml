@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.flooc.combo</groupId>
+    <artifactId>combo-parent</artifactId>
+    <version>${revision}</version>
+    <relativePath>../../combo-parent</relativePath>
+  </parent>
+
+  <groupId>org.flooc.combox</groupId>
+  <artifactId>combo-x-starters</artifactId>
+  <packaging>pom</packaging>
+  <name>${project.artifactId} ${project.version}</name>
+
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <maven.install.skip>true</maven.install.skip>
+    <maven.test.skip>true</maven.test.skip>
+  </properties>
+
+
+  <modules>
+    <module>combox-starter</module>
+    <module>combox-webmvc-starter</module>
+    <module>combox-startup-starter</module>
+    <module>combox-web-starter</module>
+    <module>combox-webflux-starter</module>
+    <module>combox-webmvc-startup-starter</module>
+    <module>combox-webflux-startup-starter</module>
+    <module>combox-cloud-webmvc-startup-starter</module>
+    <module>combox-data-operation-starter</module>
+    <module>combox-data-jpa-starter</module>
+    <module>combox-oss-starter</module>
+    <module>combox-security-starter</module>
+    <module>combox-serial-number-starter</module>
+    <module>combox-sms-starter</module>
+    <module>combox-cloud-openfeign-starter</module>
+    <module>combox-cloud-gateway-startup-starter</module>
+    <module>combox-redis-starter</module>
+  </modules>
+
+
+
+
+</project>

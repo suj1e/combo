@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.flooc.combo</groupId>
+  <artifactId>combo</artifactId>
+  <version>${revision}</version>
+  <name>${project.artifactId} ${project.version}</name>
+  <description>Combo Project</description>
+  <modules>
+    <module>combo-project</module>
+    <module>combo-dependencies</module>
+    <module>combo-parent</module>
+    <module>combo-bom</module>
+    <module>combo-platform</module>
+  </modules>
+  <packaging>pom</packaging>
+  <url>https://github.com/suj1e/combo</url>
+  <organization>
+    <name>Flooc</name>
+    <url>https://flooc.cn</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>sujie</name>
+      <email>1733279908@qq.com</email>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/suj1e/combo</url>
+    <connection>git://github.com/suj1e/combo.git</connection>
+    <developerConnection>git@github.com:suj1e/combo.git</developerConnection>
+  </scm>
+  <properties>
+    <!-- Project Version -->
+    <revision>1.0.0-SNAPSHOT</revision>
+    <!-- Maven Properties -->
+    <maven.deploy.skip>true</maven.deploy.skip>
+    <maven.install.skip>true</maven.install.skip>
+    <maven.test.skip>true</maven.test.skip>
+    <!-- Java Version -->
+    <java.version>21</java.version>
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <!-- Maven Plugin Version -->
+    <easyj-maven-plugin.version>1.1.5</easyj-maven-plugin.version>
+    <git-commit-id-maven-plugin.version>9.0.1</git-commit-id-maven-plugin.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>icu.easyj.maven.plugins</groupId>
+        <artifactId>easyj-maven-plugin</artifactId>
+        <version>${easyj-maven-plugin.version}</version>
+        <configuration>
+          <simplifiedPomFileName>.flattened-pom.xml</simplifiedPomFileName>
+          <useTabIndent>true</useTabIndent>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten-pom</id>
+            <goals>
+              <goal>simplify-pom</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>clean-flattened-pom</id>
+            <goals>
+              <goal>clean-simplify-pom</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>surefire-test</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <testFailureIgnore>false</testFailureIgnore>
+              <includes>
+                <include>**/*CITCase.java</include>
+                <include>**/*Test.java</include>
+              </includes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>git-commit-id-package</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.github.git-commit-id</groupId>
+            <artifactId>git-commit-id-maven-plugin</artifactId>
+            <version>${git-commit-id-maven-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>get-the-git-infos</id>
+                <goals>
+                  <goal>revision</goal>
+                </goals>
+                <phase>initialize</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <generateGitPropertiesFile>true</generateGitPropertiesFile>
+              <generateGitPropertiesFilename>${project.build.outputDirectory}/git.
+              </generateGitPropertiesFilename>
+              <includeOnlyProperties>
+                <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+                <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+              </includeOnlyProperties>
+              <format>json</format>
+              <commitIdGenerationMode>full</commitIdGenerationMode>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+
+</project>

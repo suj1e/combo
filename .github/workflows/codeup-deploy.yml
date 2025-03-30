@@ -1,0 +1,98 @@
+name: "Codeup Deploy"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy-to-codeup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+          server-id: codeup-repo
+          settings-path: ${{ github.workspace }}
+
+      - name: Create settings.xml
+        run: |
+          cat << EOF > ${{ github.workspace }}/settings.xml
+          <settings>
+            <servers>
+              <server>
+                <id>codeup-repo</id>
+                <username>${{ secrets.CODEUP_USERNAME }}</username>
+                <password>${{ secrets.CODEUP_PASSWORD }}</password>
+              </server>
+            </servers>
+            <profiles>
+              <profile>
+                <id>github-repo</id>
+                <repositories>
+                  <repository>
+                    <id>codeup-repo</id>
+                    <url>${{ secrets.CODEUP_RELEASE_REPO_URL }}</url>
+                    <releases>
+                      <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                      <enabled>false</enabled>
+                    </snapshots>
+                  </repository>
+                  <repository>
+                    <id>codeup-repo</id>
+                    <url>${{ secrets.CODEUP_SNAPSHOT_REPO_URL }}</url>
+                    <releases>
+                      <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                      <enabled>true</enabled>
+                    </snapshots>
+                  </repository>
+                  <repository>
+                    <id>spring-milestones</id>
+                    <name>Spring Milestones</name>
+                    <url>https://repo.spring.io/milestone</url>
+                    <snapshots>
+                      <enabled>false</enabled>
+                    </snapshots>
+                  </repository>
+                  <repository>
+                    <id>spring-snapshots</id>
+                    <name>Spring Snapshots</name>
+                    <url>https://repo.spring.io/snapshot</url>
+                    <releases>
+                      <enabled>false</enabled>
+                    </releases>
+                  </repository>
+                  <repository>
+                    <name>Central Portal Snapshots</name>
+                    <id>central-portal-snapshots</id>
+                    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+                    <releases>
+                      <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                      <enabled>true</enabled>
+                    </snapshots>
+                  </repository>
+                </repositories>
+              </profile>
+            </profiles>
+            <activeProfiles>
+              <activeProfile>github-repo</activeProfile>
+            </activeProfiles>
+          </settings>
+          EOF
+
+      - name: Publish to Codeup Artifact Repository
+        run: mvn -B deploy -s ${{ github.workspace }}/settings.xml -DaltSnapshotDeploymentRepository=codeup-repo::default::${{ secrets.CODEUP_SNAPSHOT_REPO_URL }} -Dmaven.test.skip=true -Pgit-commit-id-package
