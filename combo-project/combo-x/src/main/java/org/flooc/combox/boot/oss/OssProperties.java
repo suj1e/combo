@@ -23,9 +23,4 @@ public class OssProperties {
 
 	private String region;
 
-	/**
-	 * @see OssServiceType#getCode()
-	 */
-	private String serviceTypeCode;
-
 }
