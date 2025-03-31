@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author sujie
  * @since 1.0.0
  */
-@ConfigurationProperties(prefix = "app.biz-extension")
+@ConfigurationProperties(prefix = "app.biz-extension.service-type")
 @Getter
 @Setter
 public class BizExtensionProperties {
@@ -19,14 +19,14 @@ public class BizExtensionProperties {
   /**
    * @see SmsProducerType#getCode()
    */
-  private Integer smsServiceCode;
+  private Integer sms;
   /**
    * @see OssServiceType#getCode()
    */
-  private Integer ossServiceCode;
+  private Integer oss;
   /**
    * @see SerialNumberType#getCode()
    */
-  private Integer serialNumberServiceCode;
+  private Integer serialNumber;
 
 }
