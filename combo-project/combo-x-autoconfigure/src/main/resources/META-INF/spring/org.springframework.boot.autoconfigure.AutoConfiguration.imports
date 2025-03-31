@@ -3,3 +3,4 @@ org.flooc.combox.autoconfigure.boot.dataoperation.DataAutoConfiguration
 org.flooc.combox.autoconfigure.boot.oss.OssAutoConfiguration
 org.flooc.combox.autoconfigure.boot.security.SecurityAutoConfiguration
 org.flooc.combox.autoconfigure.boot.sms.SmsAutoConfiguration
+org.flooc.combox.autoconfigure.boot.bizextension.BizExtensionAutoConfiguration

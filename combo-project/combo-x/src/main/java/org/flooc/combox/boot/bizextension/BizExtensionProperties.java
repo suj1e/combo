@@ -11,7 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author sujie
  * @since 1.0.0
  */
-@ConfigurationProperties(prefix = "app.bizextension")
+@ConfigurationProperties(prefix = "app.biz-extension")
 @Getter
 @Setter
 public class BizExtensionProperties {
