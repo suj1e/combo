@@ -33,8 +33,12 @@ public final class SpringAppUtil {
     return applicationContext.getBeansOfType(requiredType);
   }
 
-  public static void publishEvent(Object event) {
+  public static void publishEvent(@NonNull Object event) {
     applicationContext.publishEvent(event);
+  }
+
+  public static String getProperty(@NonNull String key) {
+    return applicationContext.getEnvironment().getProperty(key);
   }
 
 
