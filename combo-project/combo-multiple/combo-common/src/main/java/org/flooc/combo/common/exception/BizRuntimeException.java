@@ -20,9 +20,18 @@ public class BizRuntimeException extends RuntimeException implements BizError {
     this.errorCode = errorCode;
   }
 
+  public BizRuntimeException(BizErrorCode<?> errorCode, String errorMessage) {
+    super(errorMessage);
+    this.errorCode = errorCode;
+  }
 
   public BizRuntimeException(BizErrorCode<?> errorCode, Throwable cause) {
     super(errorCode.getText(), cause);
+    this.errorCode = errorCode;
+  }
+
+  public BizRuntimeException(BizErrorCode<?> errorCode, String errorMessage, Throwable cause) {
+    super(errorMessage, cause);
     this.errorCode = errorCode;
   }
 

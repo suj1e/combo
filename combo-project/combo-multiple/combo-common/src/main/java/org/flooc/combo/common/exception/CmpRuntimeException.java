@@ -19,9 +19,20 @@ public class CmpRuntimeException extends RuntimeException implements CmpError {
     this.errorCode = errorCode;
   }
 
+  public CmpRuntimeException(CmpErrorCode<?> errorCode, String errorMessage) {
+    super(errorMessage);
+    this.errorCode = errorCode;
+  }
+
   public CmpRuntimeException(CmpErrorCode<?> errorCode, Throwable cause) {
     super(errorCode.getText(), cause);
     this.errorCode = errorCode;
   }
+
+  public CmpRuntimeException(CmpErrorCode<?> errorCode, String errorMessage, Throwable cause) {
+    super(errorMessage, cause);
+    this.errorCode = errorCode;
+  }
+
 
 }
