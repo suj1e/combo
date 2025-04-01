@@ -19,10 +19,10 @@ import org.springframework.core.annotation.AliasFor;
 public @interface EnableServiceDispatch {
 
   @AliasFor(annotation = EnableCmdServiceDispatch.class, attribute = "value")
-  String cmdServiceScan() default "${app.service.scan}";
+  String cmdServicesScan();
 
   @AliasFor(annotation = EnableQueryServiceDispatch.class, attribute = "value")
-  String queryServiceScan() default "${app.service.scan}";
+  String queryServicesScan();
 
 
 }

@@ -3,7 +3,6 @@ package org.flooc.combo.dataoperation.dispatch;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
-import org.flooc.combo.common.util.SpringAppUtil;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -11,7 +10,6 @@ import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.lang.NonNull;
-import org.springframework.util.StringUtils;
 
 /**
  * @author sujie
@@ -27,9 +25,7 @@ public abstract class AbstractServiceRegister implements ImportBeanDefinitionReg
     if (attributes == null) {
       return;
     }
-    String value = attributes.getString("value");
-    String basePackage = SpringAppUtil.getProperty(value);
-    basePackage = StringUtils.hasText(basePackage) ? basePackage : value;
+    String basePackage = attributes.getString("value");
     Class<?> factoryBeanType = attributes.getClass("factoryBeanType");
     Class<?> serviceType = attributes.getClass("serviceType");
     Class<? extends Annotation> excludeAnnoType = attributes.getClass("excludeAnnoType");
@@ -49,11 +45,11 @@ public abstract class AbstractServiceRegister implements ImportBeanDefinitionReg
           String beanName = parseBeanName(serviceInterface, includeAnnoType);
           registry.registerBeanDefinition(beanName, builder.getBeanDefinition());
           if (log.isDebugEnabled()) {
-            log.debug("Successfully to create service bean: {}", beanName);
+            log.debug("Successfully to register service bean: {}", beanName);
           }
         }
       } catch (Exception e) {
-        log.error("Failed to create service", e);
+        log.error("Failed to register service bean", e);
       }
     }
   }
