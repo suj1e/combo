@@ -3,6 +3,7 @@ package org.flooc.combo.dataoperation.dispatch;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
+import org.flooc.combo.common.util.SpringAppUtil;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -26,14 +27,9 @@ public abstract class AbstractServiceRegister implements ImportBeanDefinitionReg
     if (attributes == null) {
       return;
     }
-    String basePackage = attributes.getString("value");
-    if (!StringUtils.hasText(basePackage)) {
-      String className = metadata.getClassName();
-      basePackage = className.substring(0, className.lastIndexOf("."));
-    }
-    if (!basePackage.endsWith("application")) {
-      basePackage = basePackage + ".application";
-    }
+    String value = attributes.getString("value");
+    String basePackage = SpringAppUtil.getProperty(value);
+    basePackage = StringUtils.hasText(basePackage) ? basePackage : value;
     Class<?> factoryBeanType = attributes.getClass("factoryBeanType");
     Class<?> serviceType = attributes.getClass("serviceType");
     Class<? extends Annotation> excludeAnnoType = attributes.getClass("excludeAnnoType");
