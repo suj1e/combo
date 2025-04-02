@@ -1,0 +1,24 @@
+package {{pkg}};
+
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants.ComponentModel;
+import org.mapstruct.MappingTarget;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}CreateCmd;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}UpdateCmd;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+
+
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Mapper(componentModel = ComponentModel.SPRING)
+public interface {{cls}} {
+
+
+	{{uPrefix}}Entity cmd2Entity({{uPrefix}}CreateCmd createCmd);
+
+  {{uPrefix}}Entity applyUpdate({{uPrefix}}UpdateCmd updateCmd, @MappingTarget {{uPrefix}}Entity entity);
+
+}

@@ -1,0 +1,31 @@
+package {{pkg}};
+
+import org.floocframework.boot.data.common.qry.PageRequestWrapper;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants.ComponentModel;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}CreateCmd;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}UpdateCmd;
+import {{group}}.domain.{{pkgPrefix}}.qry.{{uPrefix}}Qry;
+import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}CreateRequest;
+import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}QryRequest;
+import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}UpdateRequest;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Mapper(componentModel = ComponentModel.SPRING)
+public interface {{cls}} {
+
+
+	{{uPrefix}}CreateCmd request2Cmd({{uPrefix}}CreateRequest request);
+
+	{{uPrefix}}UpdateCmd request2Cmd({{uPrefix}}UpdateRequest request);
+
+	{{uPrefix}}Qry request2Qry({{uPrefix}}QryRequest request);
+
+	@Mapping(expression = "java(request2Qry(request.getRequestData()))", target = "requestData")
+	PageRequestWrapper<{{uPrefix}}Qry> request2Qry(PageRequestWrapper<{{uPrefix}}QryRequest> request);
+
+}

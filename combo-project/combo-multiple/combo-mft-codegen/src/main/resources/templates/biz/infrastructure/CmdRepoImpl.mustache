@@ -1,0 +1,40 @@
+package {{pkg}};
+
+import org.springframework.stereotype.Repository;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{uPrefix}}CmdRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import {{group}}.infrastructure.{{pkgPrefix}}.dataobject.{{uPrefix}}DO;
+import {{group}}.infrastructure.{{pkgPrefix}}.mapper.{{uPrefix}}DOMapper;
+import {{group}}.infrastructure.{{pkgPrefix}}.repo.support.{{uPrefix}}DOCmdRepo;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Repository
+public class {{cls}} implements {{uPrefix}}CmdRepo {
+
+  @Autowired
+	private {{uPrefix}}DOCmdRepo {{prefix}}DOCmdRepo;
+  @Autowired
+	private {{uPrefix}}DOMapper {{prefix}}DOMapper;
+
+	@Override
+	public {{uPrefix}}Entity createE({{uPrefix}}Entity entity) {
+		{{uPrefix}}DO {{prefix}}DO = {{prefix}}DOCmdRepo.save({{prefix}}DOMapper.entity2DO(entity));
+		return {{prefix}}DOMapper.do2Entity({{prefix}}DO);
+	}
+
+	@Override
+	public {{uPrefix}}Entity updateE({{uPrefix}}Entity entity) {
+		{{uPrefix}}DO {{prefix}}DO = {{prefix}}DOCmdRepo.saveAndFlush({{prefix}}DOMapper.entity2DO(entity));
+		return {{prefix}}DOMapper.do2Entity({{prefix}}DO);
+	}
+
+	@Override
+	public void deleteE({{uPrefix}}Entity entity) {
+		{{prefix}}DOCmdRepo.deleteById(entity.getId());
+	}
+
+}

@@ -1,0 +1,23 @@
+package {{pkg}};
+
+import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+public final class {{cls}} {
+
+  private {{cls}}() {
+  }
+
+  public record {{uPrefix}}CreateEvent({{uPrefix}}Entity {{prefix}}) {
+  }
+
+  public record {{uPrefix}}UpdateEvent({{uPrefix}}Entity {{prefix}}) {
+  }
+
+  public record {{uPrefix}}DeleteEvent({{uPrefix}}Entity {{prefix}}) {
+  }
+
+}

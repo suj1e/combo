@@ -1,0 +1,21 @@
+package {{pkg}};
+
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants.ComponentModel;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+import {{group}}.infrastructure.{{pkgPrefix}}.dataobject.{{uPrefix}}DO;
+
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Mapper(componentModel = ComponentModel.SPRING)
+public interface {{cls}} {
+
+
+	{{uPrefix}}DO entity2DO({{uPrefix}}Entity entity);
+
+	{{uPrefix}}Entity do2Entity({{uPrefix}}DO dataObject);
+
+}

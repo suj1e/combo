@@ -29,6 +29,7 @@
     <module>combo-cloud-rpc</module>
     <module>combo-web</module>
     <module>combo-webmvc</module>
+    <module>combo-mft-codegen</module>
   </modules>
 
 </project>

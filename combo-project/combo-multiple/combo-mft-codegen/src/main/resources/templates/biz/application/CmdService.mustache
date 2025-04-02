@@ -1,0 +1,23 @@
+package {{pkg}};
+
+
+import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}CreateCmd;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}UpdateCmd;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+public interface {{cls}} {
+
+	String create({{uPrefix}}CreateCmd createCmd);
+
+	void update({{uPrefix}}UpdateCmd updateCmd);
+
+	void delete(String id);
+
+	void valid(String id);
+
+	void invalid(String id);
+
+}

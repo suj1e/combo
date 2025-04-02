@@ -1,0 +1,57 @@
+package {{pkg}};
+
+import com.querydsl.core.BooleanBuilder;
+import java.util.Optional;
+import org.floocframework.boot.data.jpa.JpaQryAssembler;
+import org.floocframework.boot.data.common.qry.DataPage;
+import org.floocframework.boot.data.common.qry.DataPageable;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Repository;
+import org.springframework.boot.context.properties.PropertyMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+import {{group}}.domain.{{pkgPrefix}}.qry.{{uPrefix}}Qry;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{uPrefix}}QryRepo;
+import {{group}}.infrastructure.{{pkgPrefix}}.dataobject.{{uPrefix}}DO;
+import {{group}}.infrastructure.{{pkgPrefix}}.mapper.{{uPrefix}}DOMapper;
+import {{group}}.infrastructure.{{pkgPrefix}}.repo.support.{{uPrefix}}DOQryRepo;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Repository
+public class {{cls}} implements {{uPrefix}}QryRepo {
+
+  @Autowired
+  private {{uPrefix}}DOQryRepo {{prefix}}DOQryRepo;
+  @Autowired
+  private {{uPrefix}}DOMapper {{prefix}}DOMapper;
+
+  @Override
+  public Optional<{{uPrefix}}Entity> qryById(String id) {
+    return {{prefix}}DOQryRepo.findById(id).map({{prefix}}DOMapper::do2Entity);
+  }
+
+  @Override
+  public boolean exists(String id) {
+    return {{prefix}}DOQryRepo.existsById(id);
+  }
+
+  @Override
+  public DataPage<{{uPrefix}}Entity> qryByPage({{uPrefix}}Qry qry, DataPageable pageable) {
+    Page<{{uPrefix}}DO> doPage = {{prefix}}DOQryRepo.findAll(pageQryCondition(qry),
+        JpaQryAssembler.defaultPageRequest(pageable));
+    return JpaQryAssembler.ofE(doPage, {{prefix}}DOMapper::do2Entity);
+  }
+
+	private BooleanBuilder pageQryCondition({{uPrefix}}Qry qry) {
+		BooleanBuilder bb = new BooleanBuilder();
+		Optional.ofNullable(qry).ifPresent(i -> {
+			PropertyMapper map = PropertyMapper.get();
+      // TODO {{uPrefix}}分页查询条件
+		});
+		return bb;
+	}
+
+}

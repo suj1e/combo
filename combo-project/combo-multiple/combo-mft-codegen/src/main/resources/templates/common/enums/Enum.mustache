@@ -1,0 +1,28 @@
+package {{pkg}};
+
+import lombok.Getter;
+import org.floocframework.boot.common.constant.AppEnum;
+import org.floocframework.boot.common.constant.BusinessEnum;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Getter
+public enum {{cls}} implements BusinessEnum<{{cls}}> {
+  ,
+  ;
+
+  final Integer code;
+  final String msg;
+
+  {{cls}}(Integer code, String msg) {
+    this.code = code;
+    this.msg = msg;
+  }
+
+  public static {{cls}} of(Integer code) {
+    return AppEnum.parseByCode({{cls}}.class, code);
+  }
+
+}

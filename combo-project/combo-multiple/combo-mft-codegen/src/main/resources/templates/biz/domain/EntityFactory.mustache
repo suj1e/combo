@@ -1,0 +1,20 @@
+package {{pkg}};
+
+import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+public final class {{cls}} {
+
+	private {{cls}}() {
+	}
+
+	public static {{uPrefix}}Entity buildOfOnly(String id) {
+		{{uPrefix}}Entity {{prefix}}Entity = new {{uPrefix}}Entity();
+		{{prefix}}Entity.setId(id);
+		return {{prefix}}Entity;
+	}
+
+}

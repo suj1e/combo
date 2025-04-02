@@ -1,0 +1,92 @@
+package {{pkg}};
+
+import org.floocframework.boot.common.web.WebResData;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import {{group}}.application.{{pkgPrefix}}.{{uPrefix}}CmdSvc;
+import {{group}}.web.{{pkgPrefix}}.mapper.{{uPrefix}}RequestMapper;
+import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}CreateRequest;
+import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}UpdateRequest;
+
+/**
+ * {{title}}-写API
+ *
+ * @author sujie
+ * @since 1.0.0
+ */
+@RestController
+@RequestMapping("/v1/{{prefix}}/cmd/")
+public class {{cls}} {
+
+  @Autowired
+	private {{uPrefix}}CmdSvc {{prefix}}CmdSvc;
+  @Autowired
+	private {{uPrefix}}RequestMapper {{prefix}}RequestMapper;
+
+  /**
+   * 新增{{title}}
+   *
+   * @param request 新增{{title}}请求模型
+   * @return 新增的{{title}}主键
+   */
+	@PostMapping("create")
+	public WebResData<String> create(@RequestBody @Validated {{uPrefix}}CreateRequest request) {
+		String id = {{prefix}}CmdSvc.create({{prefix}}RequestMapper.request2Cmd(request));
+		return WebResData.forOK(id);
+	}
+
+  
+  /**
+   * 修改{{title}}
+   *
+   * @param request 修改{{title}}请求模型
+   * @return 修改成功响应
+   */ 
+	@PostMapping("update")
+	public WebResData<Void> update(@RequestBody @Validated {{uPrefix}}UpdateRequest request) {
+		{{prefix}}CmdSvc.update({{prefix}}RequestMapper.request2Cmd(request));
+		return WebResData.forOK();
+	}
+
+  /**
+   * 删除{{title}}
+   *
+   * @param id 待删除的{{title}}主键
+   * @return 删除成功响应
+   */ 
+	@PostMapping("delete")
+	public WebResData<Void> delete(@RequestParam("id") String id) {
+		{{prefix}}CmdSvc.delete(id);
+		return WebResData.forOK();
+	}
+
+  /**
+   * 使{{title}}生效
+   *
+   * @param id 待生效的{{title}}主键
+   * @return 生效成功响应
+   */
+	@PostMapping("valid")
+	public WebResData<Void> valid(@RequestParam("id") String id) {
+		{{prefix}}CmdSvc.valid(id);
+		return WebResData.forOK();
+	}
+
+  /**
+   * 使{{title}}失效
+   *
+   * @param id 待失效的{{title}}主键
+   * @return 失效成功响应
+   */ 
+	@PostMapping("invalid")
+	public WebResData<Void> invalid(@RequestParam("id") String id) {
+		{{prefix}}CmdSvc.invalid(id);
+		return WebResData.forOK();
+	}
+
+}

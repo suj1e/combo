@@ -1,0 +1,25 @@
+package {{pkg}};
+
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
+import java.util.Optional;
+import {{enumTypeFull}};
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Converter
+public class {{cls}} implements AttributeConverter<{{enumType}}, Integer> {
+
+
+  @Override
+  public Integer convertToDatabaseColumn({{enumType}} attribute) {
+    return Optional.ofNullable(attribute).map({{enumType}}::getCode).orElse(null);
+  }
+
+  @Override
+  public {{enumType}} convertToEntityAttribute(Integer dbData) {
+    return Optional.ofNullable(dbData).map({{enumType}}::of).orElse(null);
+  }
+}

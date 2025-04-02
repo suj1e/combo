@@ -1,0 +1,17 @@
+package {{pkg}};
+
+import lombok.Getter;
+import lombok.Setter;
+import org.floocframework.boot.data.common.cmd.UpdateCmd;
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Getter
+@Setter
+public class {{cls}} extends Abstract{{uPrefix}}Cmd implements UpdateCmd {
+
+	private String id;
+
+}

@@ -1,0 +1,27 @@
+package {{pkg}};
+
+import java.util.Optional;
+import org.floocframework.boot.common.convert.DataMapper;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants.ComponentModel;
+import {{enumTypeFull}};
+
+/**
+ * @author sujie
+ * @since 1.0.0
+ */
+@Mapper(componentModel = ComponentModel.SPRING)
+public class {{cls}} implements DataMapper<{{enumType}}, String> {
+
+	@Override
+	public {{enumType}} val2Obj(String val) {
+		return {{enumType}}.of(Integer.parseInt(val));
+	}
+
+	@Override
+	public String obj2Val({{enumType}} obj) {
+		return Optional.ofNullable(obj).map(i -> String.valueOf(i.getCode())).orElse(null);
+	}
+
+
+}

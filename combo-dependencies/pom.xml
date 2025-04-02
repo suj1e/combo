@@ -47,6 +47,8 @@
     <bytebuddy.version>1.16.1</bytebuddy.version>
     <jodd-util.version>6.3.0</jodd-util.version>
     <mysql-connector-java.version>8.0.29</mysql-connector-java.version>
+    <guava.version>33.4.5-jre</guava.version>
+    <mustache.version>0.9.14</mustache.version>
   </properties>
 
   <dependencyManagement>
@@ -191,6 +193,16 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql-connector-java.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.spullara.mustache.java</groupId>
+        <artifactId>compiler</artifactId>
+        <version>${mustache.version}</version>
       </dependency>
       <!-- Dependencies End -->
     </dependencies>
