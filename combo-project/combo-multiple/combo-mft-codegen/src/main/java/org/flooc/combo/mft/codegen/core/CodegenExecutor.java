@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @since 1.0.0
  */
 public class CodegenExecutor {
-
+  // TODO 使用静态块来初始化，保证第一次使用时被初始化且只被初始化一次
   private static final Map<CodegenEntryType, CodegenEntry> CODEGEN_ENTRY_CACHE = new ConcurrentHashMap<>();
 
   public static void execute(CodegenEntryType type, CodegenContext context) throws IOException {
