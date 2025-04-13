@@ -18,6 +18,7 @@ public enum DomainTemplate implements TemplateMetadata {
   CmdRepo("repo"),
   QueryRepo("repo"),
   EventProcessor("event"),
+  AbstractVO("vo"),
   VO("vo"),
   VOMapper("mapper"),
   ;
