@@ -1,23 +1,19 @@
 package {{pkg}};
 
-
-import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}CreateCmd;
-import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}UpdateCmd;
+import org.flooc.combo.dataoperation.dispatch.cmd.CmdService;
+import org.flooc.combo.dataoperation.dispatch.cmd.CmdServiceDefinition;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{upperPrefix}}CreateCmd;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{upperPrefix}}UpdateCmd;
+import {{group}}.application.{{pkgPrefix}}.mapper.{{upperPrefix}}CmdMapper;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{upperPrefix}}CmdRepo;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{upperPrefix}}QueryRepo;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
-public interface {{cls}} {
+@CmdServiceDefinition(queryRepoType = {{upperPrefix}}QueryRepo.class, cmdRepoType = {{upperPrefix}}CmdRepo.class, cmdMapperType = {{upperPrefix}}CmdMapper.class)
+public interface {{cls}} extends CmdService<{{upperPrefix}}CreateCmd, {{upperPrefix}}UpdateCmd> {
 
-	String create({{uPrefix}}CreateCmd createCmd);
-
-	void update({{uPrefix}}UpdateCmd updateCmd);
-
-	void delete(String id);
-
-	void valid(String id);
-
-	void invalid(String id);
 
 }

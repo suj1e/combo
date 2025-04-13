@@ -1,15 +1,15 @@
 package {{pkg}};
 
 import {{group}}.api.ApiConstant;
-import {{group}}.api.{{pkgPrefix}}.{{uPrefix}}QryRpcApi;
+import {{group}}.api.{{pkgPrefix}}.{{upperPrefix}}QueryRpcApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
-@FeignClient(contextId = "{{prefix}}QryRpcClient", name = ApiConstant.SERVER_NAME, path = ApiConstant.SERVER_PATH + {{uPrefix}}QryRpcApi.PATH)
-public interface {{cls}} extends {{uPrefix}}QryRpcApi {
+@FeignClient(contextId = "{{prefix}}QueryRpcClient", name = ApiConstant.SERVER_NAME, path = ApiConstant.SERVER_PATH + {{upperPrefix}}QueryRpcApi.PATH)
+public interface {{cls}} extends {{upperPrefix}}QueryRpcApi {
 
 
 }

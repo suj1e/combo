@@ -2,8 +2,8 @@ package {{pkg}};
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants.ComponentModel;
-import {{group}}.application.{{pkgPrefix}}.vo.{{uPrefix}}VO;
-import {{group}}.web.{{pkgPrefix}}.resp.{{uPrefix}}QryResp;
+import {{group}}.domain.{{pkgPrefix}}.vo.{{upperPrefix}}VO;
+import {{group}}.web.{{pkgPrefix}}.response.{{upperPrefix}}QueryResp;
 
 /**
  * @author sujie
@@ -13,6 +13,6 @@ import {{group}}.web.{{pkgPrefix}}.resp.{{uPrefix}}QryResp;
 public interface {{cls}} {
 
 
-	{{uPrefix}}QryResp vo2Resp({{uPrefix}}VO vo);
+	{{upperPrefix}}QueryResp vo2Resp({{upperPrefix}}VO vo);
 
 }

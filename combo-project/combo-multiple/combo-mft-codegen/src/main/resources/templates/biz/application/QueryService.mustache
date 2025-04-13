@@ -1,19 +1,19 @@
 package {{pkg}};
 
-import org.floocframework.boot.data.common.qry.DataPage;
-import org.floocframework.boot.data.common.qry.PageRequestWrapper;
-import {{group}}.application.{{pkgPrefix}}.vo.{{uPrefix}}VO;
-import {{group}}.domain.{{pkgPrefix}}.qry.{{uPrefix}}Qry;
+import org.flooc.combo.dataoperation.dispatch.query.QueryService;
+import org.flooc.combo.dataoperation.dispatch.query.QueryServiceDefinition;
+import {{group}}.domain.{{pkgPrefix}}.vo.{{upperPrefix}}VO;
+import {{group}}.domain.{{pkgPrefix}}.query.{{upperPrefix}}PageQuery;
+import {{group}}.domain.{{pkgPrefix}}.mapper.{{upperPrefix}}VOMapper;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{upperPrefix}}QueryRepo;
 
 
 /**
  * @author sujie
  * @since 1.0.0
  */
-public interface {{cls}} {
+@QueryServiceDefinition(queryRepoType = {{upperPrefix}}QueryRepo.class, voMapperType = {{upperPrefix}}VOMapper.class)
+public interface {{cls}} extends QueryService<{{upperPrefix}}VO, {{upperPrefix}}PageQuery> {
 
-	DataPage<{{uPrefix}}VO> findByPage(PageRequestWrapper<{{uPrefix}}Qry> requestWrapper);
-
-	{{uPrefix}}VO findById(String id);
 
 }

@@ -2,7 +2,7 @@ package {{pkg}};
 
 import lombok.Getter;
 import lombok.Setter;
-import org.floocframework.boot.data.common.cmd.UpdateCmd;
+import org.flooc.combo.dataoperation.cmd.UpdateCmd;
 
 /**
  * @author sujie
@@ -10,7 +10,7 @@ import org.floocframework.boot.data.common.cmd.UpdateCmd;
  */
 @Getter
 @Setter
-public class {{cls}} extends Abstract{{uPrefix}}Cmd implements UpdateCmd {
+public class {{cls}} extends Abstract{{upperPrefix}}Cmd implements UpdateCmd {
 
 	private String id;
 

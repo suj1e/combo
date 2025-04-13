@@ -1,10 +1,10 @@
 package {{pkg}};
 
-import org.floocframework.boot.data.common.event.EventProcessor;
+import org.flooc.combo.dataoperation.event.EventProcessor;
 import org.springframework.stereotype.Service;
 import org.springframework.context.event.EventListener;
-import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
-import {{group}}.domain.{{pkgPrefix}}.event.{{uPrefix}}Events;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
+import {{group}}.domain.{{pkgPrefix}}.event.{{upperPrefix}}Events;
 
 /**
  * @author sujie
@@ -16,19 +16,19 @@ public class {{cls}} implements EventProcessor {
   // @Async("appTaskPool")
   // @TransactionalEventListener
   @EventListener
-  public void handle({{uPrefix}}Events.{{uPrefix}}CreateEvent event) {
+  public void handle({{upperPrefix}}Events.{{upperPrefix}}CreateEvent event) {
   }
 
   // @Async("appTaskPool")
   // @TransactionalEventListener
   @EventListener
-  public void handle({{uPrefix}}Events.{{uPrefix}}UpdateEvent event) {
+  public void handle({{upperPrefix}}Events.{{upperPrefix}}UpdateEvent event) {
   }
 
   // @Async("appTaskPool")
   // @TransactionalEventListener
   @EventListener
-  public void handle({{uPrefix}}Events.{{uPrefix}}DeleteEvent event) {
+  public void handle({{upperPrefix}}Events.{{upperPrefix}}DeleteEvent event) {
   }
 
 }

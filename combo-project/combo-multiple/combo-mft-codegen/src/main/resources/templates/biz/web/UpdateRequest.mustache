@@ -2,7 +2,7 @@ package {{pkg}};
 
 import lombok.Getter;
 import lombok.Setter;
-import org.floocframework.boot.common.web.req.UpdateReq;
+import org.flooc.combo.web.request.UpdateRequest;
 
 /**
  * {{title}}修改请求模型
@@ -12,7 +12,7 @@ import org.floocframework.boot.common.web.req.UpdateReq;
  */
 @Getter
 @Setter
-public class {{cls}} extends Abstract{{uPrefix}}Request implements UpdateReq {
+public class {{cls}} extends Abstract{{upperPrefix}}Request implements UpdateRequest {
 
   private String id;
 

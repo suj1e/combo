@@ -1,15 +1,15 @@
 package {{pkg}};
 
-import org.floocframework.boot.data.common.qry.PageRequestWrapper;
+import org.flooc.combo.dataoperation.query.PageRequestWrapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants.ComponentModel;
-import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}CreateCmd;
-import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}UpdateCmd;
-import {{group}}.domain.{{pkgPrefix}}.qry.{{uPrefix}}Qry;
-import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}CreateRequest;
-import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}QryRequest;
-import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}UpdateRequest;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{upperPrefix}}CreateCmd;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{upperPrefix}}UpdateCmd;
+import {{group}}.domain.{{pkgPrefix}}.query.{{upperPrefix}}PageQuery;
+import {{group}}.web.{{pkgPrefix}}.request.{{upperPrefix}}CreateRequest;
+import {{group}}.web.{{pkgPrefix}}.request.{{upperPrefix}}QueryRequest;
+import {{group}}.web.{{pkgPrefix}}.request.{{upperPrefix}}UpdateRequest;
 
 /**
  * @author sujie
@@ -19,13 +19,13 @@ import {{group}}.web.{{pkgPrefix}}.request.{{uPrefix}}UpdateRequest;
 public interface {{cls}} {
 
 
-	{{uPrefix}}CreateCmd request2Cmd({{uPrefix}}CreateRequest request);
+	{{upperPrefix}}CreateCmd request2Cmd({{upperPrefix}}CreateRequest request);
 
-	{{uPrefix}}UpdateCmd request2Cmd({{uPrefix}}UpdateRequest request);
+	{{upperPrefix}}UpdateCmd request2Cmd({{upperPrefix}}UpdateRequest request);
 
-	{{uPrefix}}Qry request2Qry({{uPrefix}}QryRequest request);
+	{{upperPrefix}}PageQuery request2Query({{upperPrefix}}QueryRequest request);
 
-	@Mapping(expression = "java(request2Qry(request.getRequestData()))", target = "requestData")
-	PageRequestWrapper<{{uPrefix}}Qry> request2Qry(PageRequestWrapper<{{uPrefix}}QryRequest> request);
+	@Mapping(expression = "java(request2Query(request.getRequestData()))", target = "requestData")
+	PageRequestWrapper<{{upperPrefix}}PageQuery> request2Query(PageRequestWrapper<{{upperPrefix}}QueryRequest> request);
 
 }

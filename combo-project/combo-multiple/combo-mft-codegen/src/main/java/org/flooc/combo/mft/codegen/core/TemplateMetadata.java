@@ -10,4 +10,6 @@ public interface TemplateMetadata {
 
   String templateName();
 
+  String getSubPkg();
+
 }

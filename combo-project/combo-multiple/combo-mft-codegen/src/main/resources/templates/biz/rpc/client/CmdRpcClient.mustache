@@ -1,15 +1,15 @@
 package {{pkg}};
 
 import {{group}}.api.ApiConstant;
-import {{group}}.api.{{pkgPrefix}}.{{uPrefix}}CmdRpcApi;
+import {{group}}.api.{{pkgPrefix}}.{{upperPrefix}}CmdRpcApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
-@FeignClient(contextId = "{{prefix}}CmdRpcClient", name = ApiConstant.SERVER_NAME, path = ApiConstant.SERVER_PATH + {{uPrefix}}CmdRpcApi.PATH)
-public interface {{cls}} extends {{uPrefix}}CmdRpcApi {
+@FeignClient(contextId = "{{prefix}}CmdRpcClient", name = ApiConstant.SERVER_NAME, path = ApiConstant.SERVER_PATH + {{upperPrefix}}CmdRpcApi.PATH)
+public interface {{cls}} extends {{upperPrefix}}CmdRpcApi {
 
 
 }

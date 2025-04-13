@@ -6,4 +6,8 @@ package org.flooc.combo.mft.codegen.core;
  */
 public interface TemplateVars {
 
+  void setCls(String cls);
+  void setPkg(String pkg);
+  String getPkg();
+
 }

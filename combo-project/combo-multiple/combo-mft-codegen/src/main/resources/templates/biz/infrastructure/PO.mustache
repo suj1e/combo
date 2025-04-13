@@ -1,13 +1,10 @@
 package {{pkg}};
 
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.floocframework.boot.data.jpa.AbstractAuditingDO;
+import org.flooc.combox.boot.dataoperation.jpa.AbstractAuditingPO;
 
 /**
  * @author sujie
@@ -17,7 +14,7 @@ import org.floocframework.boot.data.jpa.AbstractAuditingDO;
 @Table(name = "{{prefix}}")
 @Setter
 @Getter
-public class {{cls}} extends AbstractAuditingDO {
+public class {{cls}} extends AbstractAuditingPO {
 
 
 }

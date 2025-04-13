@@ -2,54 +2,54 @@ package {{pkg}};
 
 import com.querydsl.core.BooleanBuilder;
 import java.util.Optional;
-import org.floocframework.boot.data.jpa.JpaQryAssembler;
-import org.floocframework.boot.data.common.qry.DataPage;
-import org.floocframework.boot.data.common.qry.DataPageable;
+import org.flooc.combo.dataoperation.query.DataPage;
+import org.flooc.combo.dataoperation.query.DataPageable;
+import org.flooc.combox.boot.dataoperation.jpa.JpaQueryAssembler;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 import org.springframework.boot.context.properties.PropertyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
-import {{group}}.domain.{{pkgPrefix}}.qry.{{uPrefix}}Qry;
-import {{group}}.domain.{{pkgPrefix}}.repo.{{uPrefix}}QryRepo;
-import {{group}}.infrastructure.{{pkgPrefix}}.dataobject.{{uPrefix}}DO;
-import {{group}}.infrastructure.{{pkgPrefix}}.mapper.{{uPrefix}}DOMapper;
-import {{group}}.infrastructure.{{pkgPrefix}}.repo.support.{{uPrefix}}DOQryRepo;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
+import {{group}}.domain.{{pkgPrefix}}.query.{{upperPrefix}}PageQuery;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{upperPrefix}}QueryRepo;
+import {{group}}.infrastructure.{{pkgPrefix}}.po.{{upperPrefix}}PO;
+import {{group}}.infrastructure.{{pkgPrefix}}.mapper.{{upperPrefix}}POMapper;
+import {{group}}.infrastructure.{{pkgPrefix}}.repo.{{upperPrefix}}JpaQueryRepo;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
 @Repository
-public class {{cls}} implements {{uPrefix}}QryRepo {
+public class {{cls}} implements {{upperPrefix}}QueryRepo {
 
   @Autowired
-  private {{uPrefix}}DOQryRepo {{prefix}}DOQryRepo;
+  private {{upperPrefix}}JpaQueryRepo {{prefix}}JpaQueryRepo;
   @Autowired
-  private {{uPrefix}}DOMapper {{prefix}}DOMapper;
+  private {{upperPrefix}}POMapper {{prefix}}POMapper;
 
   @Override
-  public Optional<{{uPrefix}}Entity> qryById(String id) {
-    return {{prefix}}DOQryRepo.findById(id).map({{prefix}}DOMapper::do2Entity);
+  public Optional<{{upperPrefix}}Entity> queryById(String id) {
+    return {{prefix}}JpaQueryRepo.findById(id).map({{prefix}}POMapper::po2Entity);
   }
 
   @Override
   public boolean exists(String id) {
-    return {{prefix}}DOQryRepo.existsById(id);
+    return {{prefix}}JpaQueryRepo.existsById(id);
   }
 
   @Override
-  public DataPage<{{uPrefix}}Entity> qryByPage({{uPrefix}}Qry qry, DataPageable pageable) {
-    Page<{{uPrefix}}DO> doPage = {{prefix}}DOQryRepo.findAll(pageQryCondition(qry),
-        JpaQryAssembler.defaultPageRequest(pageable));
-    return JpaQryAssembler.ofE(doPage, {{prefix}}DOMapper::do2Entity);
+  public DataPage<{{upperPrefix}}Entity> queryByPage({{upperPrefix}}PageQuery pageQuery, DataPageable pageable) {
+    Page<{{upperPrefix}}PO> poPage = {{prefix}}JpaQueryRepo.findAll(pageQueryCondition(pageQuery),
+      JpaQueryAssembler.defaultPageRequest(pageable));
+    return JpaQueryAssembler.of(poPage, {{prefix}}POMapper::po2Entity);
   }
 
-	private BooleanBuilder pageQryCondition({{uPrefix}}Qry qry) {
+	private BooleanBuilder pageQueryCondition({{upperPrefix}}PageQuery pageQuery) {
 		BooleanBuilder bb = new BooleanBuilder();
-		Optional.ofNullable(qry).ifPresent(i -> {
+		Optional.ofNullable(pageQuery).ifPresent(i -> {
 			PropertyMapper map = PropertyMapper.get();
-      // TODO {{uPrefix}}分页查询条件
+      // TODO {{upperPrefix}}分页查询条件
 		});
 		return bb;
 	}

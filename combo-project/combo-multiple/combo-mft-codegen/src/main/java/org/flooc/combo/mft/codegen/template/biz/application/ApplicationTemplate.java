@@ -1,24 +1,29 @@
 package org.flooc.combo.mft.codegen.template.biz.application;
 
 
+import lombok.Getter;
 import org.flooc.combo.mft.codegen.core.TemplateMetadata;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
+@Getter
 public enum ApplicationTemplate implements TemplateMetadata {
-  AbstractCmd,
-  CmdMapper,
-  CmdService,
-  CmdServiceImpl,
-  CreateCmd,
-  QueryService,
-  QueryServiceImpl,
-  UpdateCmd,
-  VO,
-  VOMapper,
+  AbstractCmd("cmd"),
+  CmdMapper("mapper"),
+  CmdService("service"),
+  CreateCmd("cmd"),
+  QueryService("service"),
+  UpdateCmd("cmd"),
+
   ;
+
+  private final String subPkg;
+
+  ApplicationTemplate(String subPkg) {
+    this.subPkg = subPkg;
+  }
 
   @Override
   public String templateDir() {
@@ -29,4 +34,5 @@ public enum ApplicationTemplate implements TemplateMetadata {
   public String templateName() {
     return this.name();
   }
+
 }

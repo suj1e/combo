@@ -2,12 +2,12 @@ package {{pkg}};
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
-import {{group}}.infrastructure.{{pkgPrefix}}.dataobject.{{uPrefix}}DO;
+import {{group}}.infrastructure.{{pkgPrefix}}.po.{{upperPrefix}}PO;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
-public interface {{cls}} extends JpaRepository<{{uPrefix}}DO, String>, QuerydslPredicateExecutor<{{uPrefix}}DO> {
+public interface {{cls}} extends JpaRepository<{{upperPrefix}}PO, String>, QuerydslPredicateExecutor<{{upperPrefix}}PO> {
 
 }

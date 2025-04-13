@@ -16,7 +16,7 @@ public class DomainTemplateVars extends AbstractTemplateVars {
 
   private String group;
   private String pkgPrefix;
-  private String uPrefix;
+  private String upperPrefix;
   private String prefix;
 
 }

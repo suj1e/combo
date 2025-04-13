@@ -1,40 +1,40 @@
 package {{pkg}};
 
 import org.springframework.stereotype.Repository;
-import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
-import {{group}}.domain.{{pkgPrefix}}.repo.{{uPrefix}}CmdRepo;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
+import {{group}}.domain.{{pkgPrefix}}.repo.{{upperPrefix}}CmdRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import {{group}}.infrastructure.{{pkgPrefix}}.dataobject.{{uPrefix}}DO;
-import {{group}}.infrastructure.{{pkgPrefix}}.mapper.{{uPrefix}}DOMapper;
-import {{group}}.infrastructure.{{pkgPrefix}}.repo.support.{{uPrefix}}DOCmdRepo;
+import {{group}}.infrastructure.{{pkgPrefix}}.po.{{upperPrefix}}PO;
+import {{group}}.infrastructure.{{pkgPrefix}}.mapper.{{upperPrefix}}POMapper;
+import {{group}}.infrastructure.{{pkgPrefix}}.repo.{{upperPrefix}}JpaCmdRepo;
 
 /**
  * @author sujie
  * @since 1.0.0
  */
 @Repository
-public class {{cls}} implements {{uPrefix}}CmdRepo {
+public class {{cls}} implements {{upperPrefix}}CmdRepo {
 
   @Autowired
-	private {{uPrefix}}DOCmdRepo {{prefix}}DOCmdRepo;
+	private {{upperPrefix}}JpaCmdRepo {{prefix}}JpaCmdRepo;
   @Autowired
-	private {{uPrefix}}DOMapper {{prefix}}DOMapper;
+	private {{upperPrefix}}POMapper {{prefix}}POMapper;
 
 	@Override
-	public {{uPrefix}}Entity createE({{uPrefix}}Entity entity) {
-		{{uPrefix}}DO {{prefix}}DO = {{prefix}}DOCmdRepo.save({{prefix}}DOMapper.entity2DO(entity));
-		return {{prefix}}DOMapper.do2Entity({{prefix}}DO);
+	public {{upperPrefix}}Entity createEntity({{upperPrefix}}Entity entity) {
+		{{upperPrefix}}PO {{prefix}}PO = {{prefix}}JpaCmdRepo.save({{prefix}}POMapper.entity2PO(entity));
+		return {{prefix}}POMapper.po2Entity({{prefix}}PO);
 	}
 
 	@Override
-	public {{uPrefix}}Entity updateE({{uPrefix}}Entity entity) {
-		{{uPrefix}}DO {{prefix}}DO = {{prefix}}DOCmdRepo.saveAndFlush({{prefix}}DOMapper.entity2DO(entity));
-		return {{prefix}}DOMapper.do2Entity({{prefix}}DO);
+	public {{upperPrefix}}Entity updateEntity({{upperPrefix}}Entity entity) {
+		{{upperPrefix}}PO {{prefix}}PO = {{prefix}}JpaCmdRepo.saveAndFlush({{prefix}}POMapper.entity2PO(entity));
+		return {{prefix}}POMapper.po2Entity({{prefix}}PO);
 	}
 
 	@Override
-	public void deleteE({{uPrefix}}Entity entity) {
-		{{prefix}}DOCmdRepo.deleteById(entity.getId());
+	public void deleteEntity({{upperPrefix}}Entity entity) {
+		{{prefix}}JpaCmdRepo.deleteById(entity.getId());
 	}
 
 }

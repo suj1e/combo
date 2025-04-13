@@ -15,7 +15,7 @@ import org.flooc.combo.mft.codegen.core.AbstractTemplateVars;
 public class OpenfeignProviderTemplateVars extends AbstractTemplateVars {
   private String group;
   private String pkgPrefix;
-  private String uPrefix;
+  private String upperPrefix;
   private String prefix;
 
 }

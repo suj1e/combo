@@ -1,0 +1,66 @@
+package {{pkg}};
+
+import org.flooc.combo.dataoperation.query.DataPage;
+import org.flooc.combo.dataoperation.query.PageRequestWrapper;
+import org.flooc.combo.dataoperation.query.PageResult;
+import org.flooc.combo.webmvc.WebMvcResData;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import {{group}}.application.{{pkgPrefix}}.service.{{upperPrefix}}QueryService;
+import {{group}}.domain.{{pkgPrefix}}.vo.{{upperPrefix}}VO;
+import {{group}}.web.{{pkgPrefix}}.mapper.{{upperPrefix}}RequestMapper;
+import {{group}}.web.{{pkgPrefix}}.mapper.{{upperPrefix}}RespMapper;
+import {{group}}.web.{{pkgPrefix}}.request.{{upperPrefix}}QueryRequest;
+import {{group}}.web.{{pkgPrefix}}.response.{{upperPrefix}}QueryResp;
+
+
+/**
+ * {{title}}-读API
+ *
+ * @author sujie
+ * @since 1.0.0
+ */
+@RestController
+@RequestMapping("/v1/{{prefix}}/qry/")
+public class {{cls}} {
+
+  @Autowired
+	private {{upperPrefix}}QueryService {{prefix}}QueryService;
+  @Autowired
+	private {{upperPrefix}}RequestMapper {{prefix}}RequestMapper;
+  @Autowired
+	private {{upperPrefix}}RespMapper {{prefix}}RespMapper;
+
+  /**
+   * 分页查询{{title}}
+   *
+   * @param requestWrapper {{title}}分页请求模型
+   * @return {{title}}分页数据响应
+   */
+	@PostMapping("page")
+	public WebMvcResData<PageResult<{{upperPrefix}}QueryResp>> page(
+			@RequestBody @Validated PageRequestWrapper<{{upperPrefix}}QueryRequest> requestWrapper) {
+		DataPage<{{upperPrefix}}VO> voPage = {{prefix}}QueryService
+			.findByPage({{prefix}}RequestMapper.request2Query(requestWrapper));
+		return WebMvcResData.success(PageResult.of(voPage, {{prefix}}RespMapper::vo2Resp));
+	}
+      
+  /**
+   * 查询{{title}}详情
+   *
+   * @param id 待查询的{{title}}主键
+   * @return {{title}}详情数据响应
+   */
+	@GetMapping("detail")
+	public WebMvcResData<{{upperPrefix}}QueryResp> detail(@RequestParam("id") String id) {
+		{{upperPrefix}}VO vo = {{prefix}}QueryService.findById(id);
+		return WebMvcResData.success({{prefix}}RespMapper.vo2Resp(vo));
+	}
+
+}

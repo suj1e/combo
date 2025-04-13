@@ -1,6 +1,6 @@
 package {{pkg}};
 
-import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
 
 /**
  * @author sujie
@@ -11,13 +11,13 @@ public final class {{cls}} {
   private {{cls}}() {
   }
 
-  public record {{uPrefix}}CreateEvent({{uPrefix}}Entity {{prefix}}) {
+  public record {{upperPrefix}}CreateEvent({{upperPrefix}}Entity {{prefix}}) {
   }
 
-  public record {{uPrefix}}UpdateEvent({{uPrefix}}Entity {{prefix}}) {
+  public record {{upperPrefix}}UpdateEvent({{upperPrefix}}Entity {{prefix}}) {
   }
 
-  public record {{uPrefix}}DeleteEvent({{uPrefix}}Entity {{prefix}}) {
+  public record {{upperPrefix}}DeleteEvent({{upperPrefix}}Entity {{prefix}}) {
   }
 
 }

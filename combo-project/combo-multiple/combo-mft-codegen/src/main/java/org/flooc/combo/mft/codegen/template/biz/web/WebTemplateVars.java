@@ -15,7 +15,7 @@ import org.flooc.combo.mft.codegen.core.AbstractTemplateVars;
 public class WebTemplateVars extends AbstractTemplateVars {
   private String group;
   private String pkgPrefix;
-  private String uPrefix;
+  private String upperPrefix;
   private String prefix;
   private String title;
 }

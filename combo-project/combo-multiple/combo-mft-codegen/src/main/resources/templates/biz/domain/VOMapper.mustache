@@ -2,8 +2,9 @@ package {{pkg}};
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants.ComponentModel;
+import org.flooc.combo.dataoperation.mapper.VOMapper;
+import {{group}}.application.{{pkgPrefix}}.vo.{{upperPrefix}}VO;
 import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
-import {{group}}.infrastructure.{{pkgPrefix}}.po.{{upperPrefix}}PO;
 
 
 /**
@@ -11,11 +12,7 @@ import {{group}}.infrastructure.{{pkgPrefix}}.po.{{upperPrefix}}PO;
  * @since 1.0.0
  */
 @Mapper(componentModel = ComponentModel.SPRING)
-public interface {{cls}} {
+public interface {{cls}} extends VOMapper<{{upperPrefix}}VO, {{upperPrefix}}Entity> {
 
-
-	{{upperPrefix}}PO entity2PO({{upperPrefix}}Entity entity);
-
-	{{upperPrefix}}Entity po2Entity({{upperPrefix}}PO po);
 
 }

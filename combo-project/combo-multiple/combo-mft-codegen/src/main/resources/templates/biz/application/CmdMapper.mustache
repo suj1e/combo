@@ -2,10 +2,10 @@ package {{pkg}};
 
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants.ComponentModel;
-import org.mapstruct.MappingTarget;
-import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}CreateCmd;
-import {{group}}.application.{{pkgPrefix}}.cmd.{{uPrefix}}UpdateCmd;
-import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
+import org.flooc.combo.dataoperation.mapper.CmdMapper;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{upperPrefix}}CreateCmd;
+import {{group}}.application.{{pkgPrefix}}.cmd.{{upperPrefix}}UpdateCmd;
+import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
 
 
 
@@ -14,11 +14,13 @@ import {{group}}.domain.{{pkgPrefix}}.entity.{{uPrefix}}Entity;
  * @since 1.0.0
  */
 @Mapper(componentModel = ComponentModel.SPRING)
-public interface {{cls}} {
+public interface {{cls}} extends CmdMapper<{{upperPrefix}}Entity, {{upperPrefix}}CreateCmd, {{upperPrefix}}UpdateCmd> {
 
-
-	{{uPrefix}}Entity cmd2Entity({{uPrefix}}CreateCmd createCmd);
-
-  {{uPrefix}}Entity applyUpdate({{uPrefix}}UpdateCmd updateCmd, @MappingTarget {{uPrefix}}Entity entity);
+  @Override
+  default {{upperPrefix}}Entity buildOfOnly(String id) {
+    {{upperPrefix}}Entity entity = new {{upperPrefix}}Entity();
+    entity.setId(id);
+    return entity;
+  }
 
 }
