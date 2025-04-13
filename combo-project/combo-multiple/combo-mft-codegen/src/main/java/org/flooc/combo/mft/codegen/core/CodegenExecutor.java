@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.ServiceLoader.Provider;
 import java.util.concurrent.ConcurrentHashMap;
+import org.flooc.combo.mft.codegen.exception.CodegenException;
 
 /**
  * 使用spi机制获取执行类
@@ -19,13 +20,18 @@ public class CodegenExecutor {
 
   private static final Map<CodegenEntryType, CodegenEntry> CODEGEN_ENTRY_CACHE = new ConcurrentHashMap<>();
 
+  public static void executeIdeaPlugin(CodegenContext context) throws IOException {
+    execute(CodegenEntryType.IdeaPlugin, context);
+  }
+
   public static void execute(CodegenEntryType type, CodegenContext context) throws IOException {
     Preconditions.checkNotNull(type);
     if (CODEGEN_ENTRY_CACHE.containsKey(type)) {
       CODEGEN_ENTRY_CACHE.get(type).generate(context);
       return;
     }
-    ServiceLoader<CodegenEntry> sl = ServiceLoader.load(CodegenEntry.class);
+    ServiceLoader<CodegenEntry> sl = ServiceLoader.load(CodegenEntry.class,
+        CodegenExecutor.class.getClassLoader());
     if (CODEGEN_ENTRY_CACHE.isEmpty()) {
       sl.stream().filter(Objects::nonNull).map(Provider::get).filter(Objects::nonNull)
           .forEach(i -> CODEGEN_ENTRY_CACHE.put(i.type(), i));
@@ -38,6 +44,8 @@ public class CodegenExecutor {
       CodegenEntry codegenEntry = entryOptional.get();
       CODEGEN_ENTRY_CACHE.put(type, codegenEntry);
       codegenEntry.generate(context);
+    } else {
+      throw new CodegenException("生成器为空");
     }
   }
 

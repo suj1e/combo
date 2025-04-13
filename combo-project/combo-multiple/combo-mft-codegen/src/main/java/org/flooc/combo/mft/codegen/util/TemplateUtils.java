@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import org.flooc.combo.mft.codegen.exception.CodegenException;
 
 /**
  * @author sujie
@@ -28,7 +29,7 @@ public final class TemplateUtils {
     }
     try {
       // 普通读取
-      try (InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(path)) {
+      try (InputStream inputStream = TemplateUtils.class.getClassLoader().getResourceAsStream(path)) {
         Preconditions.checkNotNull(inputStream);
         String templateContent = new String(inputStream.readAllBytes());
         TEMPLATE_CACHE.put(path, templateContent);
@@ -37,13 +38,16 @@ public final class TemplateUtils {
     } catch (Exception e) {
       // jar方式读取
       CodeSource codeSource = TemplateUtils.class.getProtectionDomain().getCodeSource();
+      if (codeSource == null) {
+        throw new CodegenException("获取模版失败");
+      }
       String jarPath = codeSource.getLocation().getPath();
       try (JarFile jarFile = new JarFile(jarPath)) {
         Enumeration<JarEntry> entries = jarFile.entries();
         while (entries.hasMoreElements()) {
           JarEntry jarEntry = entries.nextElement();
           if (jarEntry.getName().endsWith(path)) {
-            try (InputStream inputStream = jarFile.getInputStream(jarEntry);) {
+            try (InputStream inputStream = jarFile.getInputStream(jarEntry)) {
               String templateContent = new String(inputStream.readAllBytes());
               TEMPLATE_CACHE.put(path,templateContent);
               return templateContent;
