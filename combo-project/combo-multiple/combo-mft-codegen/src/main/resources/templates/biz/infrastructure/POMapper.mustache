@@ -1,5 +1,6 @@
 package {{pkg}};
 
+import org.flooc.combox.boot.dataoperation.jpa.mapper.POMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants.ComponentModel;
 import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
@@ -11,11 +12,7 @@ import {{group}}.infrastructure.{{pkgPrefix}}.po.{{upperPrefix}}PO;
  * @since 1.0.0
  */
 @Mapper(componentModel = ComponentModel.SPRING)
-public interface {{cls}} {
+public interface {{cls}} extends POMapper<{{upperPrefix}}PO,{{upperPrefix}}Entity> {
 
-
-	{{upperPrefix}}PO entity2PO({{upperPrefix}}Entity entity);
-
-	{{upperPrefix}}Entity po2Entity({{upperPrefix}}PO po);
 
 }

@@ -1,14 +1,9 @@
 package {{pkg}};
 
 import com.querydsl.core.BooleanBuilder;
-import java.util.Optional;
-import org.flooc.combo.dataoperation.query.DataPage;
-import org.flooc.combo.dataoperation.query.DataPageable;
-import org.flooc.combox.boot.dataoperation.jpa.JpaQueryAssembler;
-import org.springframework.data.domain.Page;
+import org.flooc.combox.boot.dataoperation.jpa.repo.AbstractQueryRepoImpl;
 import org.springframework.stereotype.Repository;
 import org.springframework.boot.context.properties.PropertyMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
 import {{group}}.domain.{{pkgPrefix}}.query.{{upperPrefix}}PageQuery;
 import {{group}}.domain.{{pkgPrefix}}.repo.{{upperPrefix}}QueryRepo;
@@ -21,37 +16,11 @@ import {{group}}.infrastructure.{{pkgPrefix}}.repo.{{upperPrefix}}JpaQueryRepo;
  * @since 1.0.0
  */
 @Repository
-public class {{cls}} implements {{upperPrefix}}QueryRepo {
+public class {{cls}} extends AbstractQueryRepoImpl<{{upperPrefix}}PO, {{upperPrefix}}Entity, {{upperPrefix}}JpaQueryRepo, {{upperPrefix}}POMapper, {{upperPrefix}}PageQuery> implements {{upperPrefix}}QueryRepo {
 
-  @Autowired
-  private {{upperPrefix}}JpaQueryRepo {{prefix}}JpaQueryRepo;
-  @Autowired
-  private {{upperPrefix}}POMapper {{prefix}}POMapper;
+   @Override
+  protected void buildPageQueryCondition(BooleanBuilder bb, {{upperPrefix}}PageQuery pageQuery, PropertyMapper propertyMapper) {
 
-  @Override
-  public Optional<{{upperPrefix}}Entity> queryById(String id) {
-    return {{prefix}}JpaQueryRepo.findById(id).map({{prefix}}POMapper::po2Entity);
   }
-
-  @Override
-  public boolean exists(String id) {
-    return {{prefix}}JpaQueryRepo.existsById(id);
-  }
-
-  @Override
-  public DataPage<{{upperPrefix}}Entity> queryByPage({{upperPrefix}}PageQuery pageQuery, DataPageable pageable) {
-    Page<{{upperPrefix}}PO> poPage = {{prefix}}JpaQueryRepo.findAll(pageQueryCondition(pageQuery),
-      JpaQueryAssembler.defaultPageRequest(pageable));
-    return JpaQueryAssembler.of(poPage, {{prefix}}POMapper::po2Entity);
-  }
-
-	private BooleanBuilder pageQueryCondition({{upperPrefix}}PageQuery pageQuery) {
-		BooleanBuilder bb = new BooleanBuilder();
-		Optional.ofNullable(pageQuery).ifPresent(i -> {
-			PropertyMapper map = PropertyMapper.get();
-      // TODO {{upperPrefix}}分页查询条件
-		});
-		return bb;
-	}
 
 }

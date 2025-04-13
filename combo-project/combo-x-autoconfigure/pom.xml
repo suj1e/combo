@@ -92,6 +92,12 @@
       <optional>true</optional>
     </dependency>
     <dependency>
+      <groupId>com.querydsl</groupId>
+      <artifactId>querydsl-jpa</artifactId>
+      <classifier>jakarta</classifier>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>org.redisson</groupId>
       <artifactId>redisson-spring-boot-starter</artifactId>
       <optional>true</optional>
