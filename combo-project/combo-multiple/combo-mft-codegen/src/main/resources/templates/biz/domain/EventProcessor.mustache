@@ -2,8 +2,6 @@ package {{pkg}};
 
 import org.flooc.combo.dataoperation.event.EventProcessor;
 import org.springframework.stereotype.Service;
-import org.springframework.context.event.EventListener;
-import {{group}}.domain.{{pkgPrefix}}.entity.{{upperPrefix}}Entity;
 import {{group}}.domain.{{pkgPrefix}}.event.{{upperPrefix}}Events;
 
 /**
@@ -13,22 +11,5 @@ import {{group}}.domain.{{pkgPrefix}}.event.{{upperPrefix}}Events;
 @Service
 public class {{cls}} implements EventProcessor {
 
-  // @Async("appTaskPool")
-  // @TransactionalEventListener
-  @EventListener
-  public void handle({{upperPrefix}}Events.{{upperPrefix}}CreateEvent event) {
-  }
-
-  // @Async("appTaskPool")
-  // @TransactionalEventListener
-  @EventListener
-  public void handle({{upperPrefix}}Events.{{upperPrefix}}UpdateEvent event) {
-  }
-
-  // @Async("appTaskPool")
-  // @TransactionalEventListener
-  @EventListener
-  public void handle({{upperPrefix}}Events.{{upperPrefix}}DeleteEvent event) {
-  }
 
 }
