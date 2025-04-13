@@ -32,7 +32,7 @@ public class CodegenExecutor {
 
   public static void execute(CodegenEntryType type, CodegenContext context) throws IOException {
     Preconditions.checkNotNull(type);
-    if (CODEGEN_ENTRY_CACHE.isEmpty()) {
+    if (CODEGEN_ENTRY_CACHE.isEmpty() || !CODEGEN_ENTRY_CACHE.containsKey(type)) {
       throw new CodegenException("Failed to generate, generator is empty");
     }
     CODEGEN_ENTRY_CACHE.get(type).generate(context);
